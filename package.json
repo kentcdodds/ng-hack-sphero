@@ -1,0 +1,12 @@
+{
+  "name": "ng-hack-sphero",
+  "description": "This is going to rock :)",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kentcdodds/ng-hack-sphero",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "cylon": "~0.9.2"
+  }
+}
