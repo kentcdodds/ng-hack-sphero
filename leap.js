@@ -3,9 +3,10 @@ var Cylon = require('cylon');
 var direction = {
   forward: false,
   left: false,
+  handPresent: false,
   height: 0
 };
-
+var lastHand = new Date();
 Cylon.robot({
   connection: {
     name: 'leapmotion',
@@ -19,8 +20,9 @@ Cylon.robot({
   },
 
   work: function(my) {
-    var dontPrint = ['pointables'];
     my.leapmotion.on('hand', function(payload) {
+      direction.handPresent = true;
+      lastHand = new Date();
 
       var palmX = payload.palmNormal[0];
       var palmZ = payload.palmNormal[2];
@@ -37,6 +39,17 @@ Cylon.robot({
 
   }
 }).start();
+
+function checkHand() {
+//  console.log('check');
+  if (new Date().getTime() - lastHand.getTime() > 300) {
+//    console.log('false');
+    direction.handPresent = false;
+  }
+  setTimeout(checkHand, 300);
+}
+
+checkHand();
 
 //function print() {
 //  console.log(direction.left ? 'left' : 'right', 'and', direction.forward ? 'forward' : 'backward', 'and', direction.height);

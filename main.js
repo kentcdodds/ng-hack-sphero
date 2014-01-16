@@ -8,6 +8,11 @@ Cylon.robot({
   work: function(my) {
     var colors = ['purple', 'white', 'blue', 'red', 'green'];
     every((0.3).second(), function() {
+        if (!leap.handPresent) {
+//            console.log("stop");
+            my.sphero.stop();
+            return;
+        }
       my.sphero.setColor(colors[leap.height]);
       var direction = 0, offset = 1;
       if(leap.left) {
@@ -22,4 +27,8 @@ Cylon.robot({
 //        console.log(leap);
     });
   }
-}).start();
+});
+
+Cylon.api({port:4321});
+
+Cylon.start();
