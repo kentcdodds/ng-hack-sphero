@@ -7,8 +7,8 @@ Cylon.robot({
 
   work: function(my) {
     var colors = ['purple', 'white', 'blue', 'red', 'green'];
-    every((1).second(), function() {
-      my.sphero.setColor(colors[leap.height];
+    every((0.3).second(), function() {
+      my.sphero.setColor(colors[leap.height]);
       var direction = 0, offset = 1;
       if(leap.left) {
         direction += 3;
@@ -19,6 +19,7 @@ Cylon.robot({
       }
       direction = 90 * direction + 45;
       my.sphero.roll(60, direction);
+//        console.log(leap);
     });
   }
 }).start();

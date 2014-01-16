@@ -3,6 +3,7 @@
   "description": "This is going to rock :)",
   "version": "0.0.1",
   "homepage": "https://github.com/kentcdodds/ng-hack-sphero",
+  "repository": "https://github.com/kentcdodds/ng-hack-sphero",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -11,6 +12,7 @@
     "cylon-firmata": "~0.8.1",
     "cylon-gpio": "~0.8.1",
     "cylon-sphero": "~0.6.0",
-    "cylon-leapmotion": "~0.3.0"
+    "cylon-leapmotion": "~0.3.0",
+    "grunt": "~0.4.2"
   }
 }
