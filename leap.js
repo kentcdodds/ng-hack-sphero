@@ -43,6 +43,4 @@ Cylon.robot({
 //  setTimeout(print, 300)
 //}
 //print();
-module.exports = function() {
-  return direction;
-};
+module.exports = direction;
