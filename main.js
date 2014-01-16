@@ -1,21 +1,24 @@
-var Cylon = require('cylon');
+var Cylon = require('cylon'),
+    leap = require('./leap');
 
 Cylon.robot({
   connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/tty.Sphero-RRP-AMP-SPP' },
   device: { name: 'sphero', driver: 'sphero' },
 
   work: function(my) {
-    var on = false;
+    var colors = ['purple', 'white', 'blue', 'red', 'green'];
     every((1).second(), function() {
-      // flash light
-      if (on) {
-        my.sphero.setColor('purple');
-        on = false;
-      } else {
-        my.sphero.setColor('white');
-        on = true;
+      my.sphero.setColor(colors[leap.height];
+      var direction = 0, offset = 1;
+      if(leap.left) {
+        direction += 3;
+        offset = -1;
       }
-      my.sphero.roll(60, Math.floor(Math.random() * 360));
+      if(!leap.forward) {
+        direction += offset;
+      }
+      direction = 90 * direction + 45;
+      my.sphero.roll(60, direction);
     });
   }
 }).start();
