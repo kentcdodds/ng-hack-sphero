@@ -1,16 +1,21 @@
 var Cylon = require('cylon');
 
-// Initialize the robot
-var robot = Cylon.robot({
-  // Change the port to the correct port for your Arduino.
-  connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' },
-  device: { name: 'led', driver: 'led', pin: 13 },
+Cylon.robot({
+  connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/cu.Sphero-RWY-AMP-SPP' },
+  device: { name: 'sphero', driver: 'sphero' },
 
   work: function(my) {
-    // we do our thing here
-    every((1).second(), function() { my.led.toggle(); });
+    var on = false;
+    every((1).second(), function() {
+      // flash light
+      if (on) {
+        my.sphero.setColor('purple');
+        on = false;
+      } else {
+        my.sphero.setColor('white');
+        on = true;
+      }
+      my.sphero.roll(60, Math.floor(Math.random() * 360));
+    });
   }
-});
-
-// start working
-robot.start();
+}).start();
