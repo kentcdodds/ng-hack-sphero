@@ -10,7 +10,8 @@ angular.module('cylon')
            });
         };
         main.ChangeColor = function(color){
-            $http({url:"http://127.0.0.1:4321/", data:color}).success(function(){
+            var value = {'color':color};
+            $http({url:"http://127.0.0.1:4321/robots/"+main.robotname+"/devices/sphero/commands/setColor", data:value}).success(function(){
                 console.log("Recieved")
             });
             console.log("Sending "+color+"....");
